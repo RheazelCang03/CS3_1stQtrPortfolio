@@ -1,29 +1,17 @@
-<script>
-    let age = window.prompt("How old are you?", "14");
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>input</title>
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+    <body>
+        <p> </p>
+    <p style="font-size: 24px;"><b> Feed Me My Snacks </b> </p>
+    Enter your age <input type: number> <br>
+    Enter your Maxage <input type: number> <br>
+    Enter your desired number of snacks <input type: number> <br> <br>
+    Result:
 
-    let sure1 = window.confirm("Is " + age + " really your age?")
-
-    let maxage = window.prompt("What is your maximum age?", "90");
-
-    let sure2 = window.confirm("Is " + maxage + " really your maxage?")
-
-    let numPerday = window.prompt("How many of your favorite food would you like to eat everyday?", "3");
-
-    let sure3 = window.confirm("Is " + numPerday + " really how much you want to eat per day?")
-
-    total = numPerday * 365 * (maxage - age);
-
-    if (sure1, sure2, sure3) {
-
-    console.log("You will need " + total + " eggs " + "to last you until the ripe old age of " + maxage);
-
-    }
-
-    else {
-
-    console.log("Run the code again.");
-
-    }
-
- 
-</script>
+    <button> Accept input </button>
+    </body>
+</html>
