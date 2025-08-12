@@ -1,19 +1,19 @@
 <script>
     let age = window.prompt("How old are you?", "14");
 
-    let sure1 = window.confirm("Is" + age + "really your age?")
+    let sure1 = window.confirm("Is " + age + " really your age?")
 
     let maxage = window.prompt("What is your maximum age?", "90");
 
-    let sure2 = window.confirm("Is" + maxage + "really your maxage?")
+    let sure2 = window.confirm("Is " + maxage + " really your maxage?")
 
     let numPerday = window.prompt("How many of your favorite food would you like to eat everyday?", "3");
 
-    let sure3 = window.confirm("Is" + numPerday + "really how much you want to eat per day?")
+    let sure3 = window.confirm("Is " + numPerday + " really how much you want to eat per day?")
 
     total = numPerday * 365 * (maxage - age);
 
-    if (sure) {
+    if (sure1, sure2, sure3) {
 
     console.log("You will need " + total + " eggs " + "to last you until the ripe old age of " + maxage);
 
