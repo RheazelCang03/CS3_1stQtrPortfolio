@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+   <h2> Q1 3rd Graded Exercise submitted by Rheazel Cang of Rubidium</h2>
+   <!-- Enter your HTML tags below  but before the opening script tag -->
+    <p> Guess the number: **** </p>
+    <p> The number is from 1 to 100 </p>
+    Enter your guess: <input type="number" id="guess"> <br>
+    </br> <input id="checkIt" type="button" value="Check It" onclick="checkIt();" />
+    </br> </br> Result: <span id="result"></span>
+
+
+    <script>
+
+       var dNumber = Math.floor(Math.random() * 100) + 1; // generates a number from 1  to 100 when the page loads
+
+        function checkIt() {
+              
+            var guess = parseInt(document.getElementById("guess").value);
+            if (guess < 1 || guess > 100) {
+                 document.getElementById("result").textContent = "Please enter a number between 1 and 100.";
+                return;
+            }
+
+            if (guess === dNumber) {
+                document.getElementById("result").textContent = "You are correct!";
+            } else if (guess < dNumber) {
+                document.getElementById("result").textContent = "Higher";
+            } else {
+                document.getElementById("result").textContent = "Lower";
+            }
+         
+        }
+    </script>
+
+</body>
+
+</html>
