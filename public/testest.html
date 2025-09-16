@@ -43,26 +43,32 @@
     if (!correct) {
       counterr--;
     }
-    
+
     document.getElementById("counter").textContent = "Attempts left: " + counterr;
     document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
     document.getElementById("message").textContent = correct ? "✅ Correct!" : "❌ Try again.";
     document.getElementById("guessInput").value = "";
+
+     if (!guessedWord.includes("_")) {
+      document.getElementById("message").textContent = "🎉 Congratulations! You guessed the word!";
+      document.getElementById("guessInput").disabled = true;
+    }
   
   }
 }
 
   function playAgain() {
-    let playAgain = prompt("Do you want to play again? (yes/no)").toLowerCase();
-    if (playAgain === "yes") {
-      do {
-        guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
-        makeGuess();
-      } while (playAgain === "yes");
-    }
-    else {
-      alert("Thank you for playing!");
-    }
+  let playAgain = prompt("Do you want to play again? (yes/no)").toLowerCase();
+  if (playAgain === "yes") {
+    guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
+    counterr = 10;
+    document.getElementById("counter").textContent = "Attempts left: " + counterr;
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    document.getElementById("message").textContent = "";
+    document.getElementById("guessInput").value = "";
+  } else {
+    alert("Thank you for playing!");
+  }
   }
 
 </script>
