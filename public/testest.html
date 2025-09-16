@@ -1,18 +1,37 @@
+<style>
+  body {
+    font-family: 'Florence', sans-serif; text-align: center; margin-top: 50px; color:rgb(255, 89, 144);
+    font-size: 20px;
+    background-color: rgb(255, 250, 206);
+    }
+</style>
+
 <h1>Guess My Word</h1>
 <p id="wordDisplay"></p>
 <input type="text" id="guessInput" maxlength="1">
 <button onclick="makeGuess()">Guess</button>
 <p id="message"></p>
+<p id="counter"></p>
+<button onclick="playAgain()">Play Again</button>
 
 <script>
-  let secretWord = ["c", "o", "d", "e"];
-  let guessedWord = ["_", "_", "_", "_"];
+  let secretWord = ["e", "a", "g", "e", "r", "e", "y", "z", "e", "l"];
+  let guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
+  let counterr = 10;
+  document.getElementById("counter").textContent = "Attempts left: " + counterr;
+  for (let i = 0; i < secretWord.length; i++) {
+    guessedWord[i] = "_";
+  }
+
 
   document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
 
   function makeGuess() {
     let guess = document.getElementById("guessInput").value.toLowerCase();
+
+    if (!(guessedWord.includes(guess)) && counterr != 0) {
     let correct = false;
+
 
     for (let i = 0; i < secretWord.length; i++) {
       if (secretWord[i] === guess) {
@@ -21,8 +40,29 @@
       }
     }
 
+    if (!correct) {
+      counterr--;
+    }
+    
+    document.getElementById("counter").textContent = "Attempts left: " + counterr;
     document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
     document.getElementById("message").textContent = correct ? "✅ Correct!" : "❌ Try again.";
     document.getElementById("guessInput").value = "";
+  
   }
+}
+
+  function playAgain() {
+    let playAgain = prompt("Do you want to play again? (yes/no)").toLowerCase();
+    if (playAgain === "yes") {
+      do {
+        guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
+        makeGuess();
+      } while (playAgain === "yes");
+    }
+    else {
+      alert("Thank you for playing!");
+    }
+  }
+
 </script>
