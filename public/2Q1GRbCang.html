@@ -1,44 +1,48 @@
 <style>
 h1 {
     font-family: 'Bookman Old Style', sans-serif; 
-    text-align: center; margin-left: 20px; margin-top: 50px;
+    text-align: center; margin-top: 50px;
     color:rgb(53, 33, 24);
   }
 
   h2 {
     font-family: 'Bookman Old Style', sans-serif; 
-    text-align: center; margin-left: 20px;
+    text-align: center;
     color:rgb(53, 33, 24);
   }
 
   body {
     font-family: 'Lucida Bright', sans-serif; 
-    text-align: justify; margin-top: 10px; margin-left: 10px;
+    text-align: center; margin-top: 10px;
+    justify-content: center;
     color:rgb(53, 33, 24);
     background-color: rgb(248, 240, 243);
     }
 
-    table {
+      table {
         font-family: 'Lucida Bright', sans-serif; 
-        text-align: center; margin-left: 5px; margin-top: 5px;
-        margin-left: 450px;
-        margin-top: 70px;
-        height: 700px;
-        width:450px;
-        background-color: rgb(216, 179, 190)
+        text-align: center;
+        margin: 70px auto;       /* center horizontally */
+        width: 400px;
+        height: 600px;
+        background-color: rgb(216, 179, 190);
       }
 
       img {
-        display: block;
-        border: 2px solid rgb(126, 165, 117);
-        margin-left: 600px;
-        margin-top: 50px;
+        display: block;          /* allow margin auto to work */
+        margin: 30px auto;       /* center horizontally and add spacing */
+        height: 150px;
+        width: 150px;
+        border: 2px solid rgb(239, 247, 237);
       }
 
       iframe {
         display: block;
-        margin-left: 510px;
-        margin-top: 50px;
+        margin: 30px auto;       /* center horizontally */
+        max-width: 560px;       /* keep responsive */
+        width: 100%;
+        height: 315px;
+        border: none;
       }
 
 </style>
@@ -46,7 +50,7 @@ h1 {
 <h1>Rubidum '29 Schedule</h1>
 
 <h2> Friday </h2>
-<table border="1">
+<table border="1" align="center">
     <tr>
         <th> Time </th>
         <th> Subject </th>
@@ -54,31 +58,28 @@ h1 {
 
     <tr>
         <td> 7:30 - 8:15</td>
-        <td> English </td>
+        <td rowspan="2"> English </td>
     </tr>
     <tr>
         <td> 8:15 - 9:00</td>
-        <td> English </td>
     </tr>
     <tr>
         <td> 9:00 - 9:10</td>
-        <td> </td>
+        <td></td>
     </tr>
     <tr>
         <td> 9:10 - 9:55</td>
-        <td> Social Science </td>
+        <td rowspan="2"> Social Science </td>
     </tr>
     <tr>
         <td> 9:55 - 10:40</td>
-        <td> Social Science </td>
     </tr>
     <tr>
         <td> 10:40 - 11:25</td>
-        <td> Math </td>
+        <td rowspan="2"> Math </td>
     </tr>
     <tr>
-        </tr><td> 11:25 - 12:10</td>
-        <td> Math </td>
+        <td> 11:25 - 12:10</td>
     </tr>
     <tr>
         <td> 12:00 - 12:10 </td>
@@ -110,6 +111,6 @@ h1 {
     </tr>
 </table>
 
-<img src="https://i.pinimg.com/474x/80/4a/47/804a473e2707172deed466be818f6e31.jpg" style="height:150px;width:150px"></img>
+<img src="https://i.pinimg.com/474x/80/4a/47/804a473e2707172deed466be818f6e31.jpg" style="height:150px;width:150px;align:center"></img>
 <iframe src="https://youtu.be/3a0pqvHnsGQ?si=X61qQlZocyrx2toM"></iframe>
 
