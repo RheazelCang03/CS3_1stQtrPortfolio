@@ -1,0 +1,18 @@
+h1 {
+    font-family: 'Lovera Personal Use', sans-serif; 
+    text-align: justify; margin-left: 10px;
+    color:rgb(53, 33, 24);
+  }
+
+  h2 {
+    font-family: 'Florence', sans-serif; 
+    text-align: justify; margin-left: 10px;
+    color:rgb(53, 33, 24);
+  }
+
+  body {
+    font-family: 'Lucida Bright', sans-serif; 
+    text-align: justify; margin-top: 10px; margin-left: 10px;
+    color:rgb(53, 33, 24);
+    background-color: rgb(255, 217, 229);
+    }
