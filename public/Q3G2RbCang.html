@@ -1,43 +1,130 @@
 <!DOCTYPE html>
-<form action="somepage.html">
 
-    <label for="userId">UserID:</label><br/>
-    <input type="number" id="userId" name="userId"><br/><br/>
+<style>
+  body {
+    font-family: Georgia, Arial, sans-serif;
+    background: #fff2f7;
+    padding: 20px;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  form{
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  fieldset{
+    margin-bottom: 30px;
+    border-radius: 5px;
+  }
+
+  label{
+    display: block;
+    margin-top: 10px;
+  }
+
+  input, select, textarea{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  input:focus, select:focus, textarea:focus{
+    border: 2px solid #ff4aba;
+    outline: none;
+    background-color: #ffeef6;
+  }
+
+  .error{
+    border: 2px solid red;
+    background-color: #ffe5f1;
+  }
+
+  .valid{
+    border: 2px solid green;
+  }
+
+  .radio-group{
+    margin-top: 10px;
+  }
+
+  input[type="submit"], input[type="reset"]{
+    width: 48%;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<script>
+    function confirmSubmit(){
+        return confirm("Are you sure you want to submit?");
+    }
+
+    function confirmReset(){
+        return confirm("Are you sure you want to reset?");
+    }
+
+    function ifEmpty(element){
+        if (element.value.trim() === ""){
+            element.classList.add("invalid");
+        } 
+        
+        else{
+            element.classList.remove("invalid");
+        }
+    }
+</script>
+
+<body>
+   <h1> Club Application Form </h1></br>
+</body>
+
+<form method="post" action="submit" onsubmit="return confirmSubmit()" onreset="return confirmReset()">
+
+    <label for="studentId">Student ID:</label><br/>
+    <input type="number" id="studentId" name="studentId" required onblur="ifEmpty(this)"><br/><br/>
 
     <label for="fullName">Full name:</label><br/>
-    <input type="text" id="fullName" name="fullName"><br/><br/>
+    <input type="text" id="fullName" name="fullName" required onblur="ifEmpty(this)"><br/><br/>
 
     <label for="birthDay">Birthday:</label><br/>
-    <input type="date" id="birthDay" name="birthDay"><br/><br/>
+    <input type="date" id="birthDay" name="birthDay" required onblur="ifEmpty(this)"><br/><br/>
 
     <label for="userName">Email Address:</label><br/>
-    <input type="text" id="userName" name="userName"><br/><br/>
+    <input type="text" id="userName" name="userName" required onblur="ifEmpty(this)"><br/><br/>
 
     <label for="userName">Mobile phone:</label><br/>
     <input type="text" id="userName" name="userName"><br/><br/>
 
     <label for="gradeLevel">Grade level</label></br>
-    <select name="gradeLevel" id="gradeLevel">
+    <select name="gradeLevel" id="gradeLevel" required onblur="ifEmpty(this)">
     <option value="7">7</option>
     <option value="8">8</option>
     <option value="9">9</option>
     <option value="10">10</option>
     <option value="11">11</option>
     <option value="12">12</option>
-    </select></br>
+    </select></br></br>
 
     <p>Intern/Extern:</p>
 
-  <input type="radio" id="intern" name="intern" value="intern">
+  <input type="radio" id="intern" name="intern" value="intern" required>
   <label for="intern">Intern</label></br>
-  <input type="radio" id="extern" name="extern" value="extern">
+  <input type="radio" id="extern" name="extern" value="extern" required>
   <label for="extern">Extern</label></br></br>
 
-
-</form>
-
     <label for="pref">Preferred Organization/Club</label></br>
-    <select name="pref" id="pref">
+    <select name="pref" id="pref" required onblur="ifEmpty(this)">
     <option value="Likha">Likha</option>
     <option value="Invictus">invictus</option>
     <option value="Kislap">Kislap</option>
