@@ -88,6 +88,35 @@
             element.classList.remove("invalid");
         }
     }
+
+   let signUps = JSON.parse(localStorage.getItem("signUps")) || [];
+
+      const form = document.forms[0];
+
+      const newSignup = {
+        student_id: form.student_id.value,
+        full_name: form.full_name.value,
+        birthday: form.birthday.value,
+        email: form.email.value,
+        mobile: form.mobile.value,
+        grade_level: form.grade_level.value,
+        status: form.status.value,
+        club: form.club.value,
+        reason: form.reason.value
+      };
+
+      signUps.push(newSignup);
+      localStorage.setItem("signUps", JSON.stringify(signUps));
+
+      alert("Sign-up saved successfully.");
+      form.reset();
+
+      return false;
+    }
+
+    function goToView() {
+      window.location.href = "viewSignUps.html";
+    }
 </script>
 
 <body>
