@@ -72,45 +72,49 @@
 
 <script>
     function confirmSubmit(){
-        return confirm("Are you sure you want to submit?");
+      return confirm("Are you sure you want to submit?");
     }
 
     function confirmReset(){
-        return confirm("Are you sure you want to reset?");
+      return confirm("Are you sure you want to reset?");
     }
 
     function ifEmpty(element){
-        if (element.value.trim() === ""){
-            element.classList.add("invalid");
-        } 
-        
-        else{
-            element.classList.remove("invalid");
-        }
+      if (element.value.trim() === ""){
+        element.classList.add("error");
+      } else {
+        element.classList.remove("error");
+        element.classList.add("valid");
+      }
     }
 
-   let signUps = JSON.parse(localStorage.getItem("signUps")) || [];
+    function saveSignup(event) {
+      // prevent default navigation
+      event.preventDefault();
 
-      const form = document.forms[0];
+      if (!confirmSubmit()) return false;
 
+      const form = document.getElementById('signupForm');
+
+      // collect values (use names/ids that match the form below)
       const newSignup = {
-        student_id: form.student_id.value,
-        full_name: form.full_name.value,
-        birthday: form.birthday.value,
-        email: form.email.value,
-        mobile: form.mobile.value,
-        grade_level: form.grade_level.value,
+        student_id: form.studentId.value.trim(),
+        full_name: form.fullName.value.trim(),
+        birthday: form.birthDay.value,
+        email: form.email.value.trim(),
+        mobile: form.mobile.value.trim(),
+        grade_level: form.gradeLevel.value,
         status: form.status.value,
-        club: form.club.value,
-        reason: form.reason.value
+        club: form.pref.value,
+        reason: form.why.value.trim()
       };
 
+      const signUps = JSON.parse(localStorage.getItem("signUps")) || [];
       signUps.push(newSignup);
       localStorage.setItem("signUps", JSON.stringify(signUps));
 
       alert("Sign-up saved successfully.");
       form.reset();
-
       return false;
     }
 
