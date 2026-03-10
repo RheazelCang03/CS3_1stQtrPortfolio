@@ -55,14 +55,14 @@
   }
 
   .valid{
-    border: 2px solid green;
+    border: 2px solid rgb(136, 27, 103);
   }
 
   .radio-group{
     margin-top: 10px;
   }
 
-  input[type="submit"], input[type="reset"]{
+  input[type="submit"], input[type="reset"], input[type="button"]{
     width: 48%;
     margin-top: 15px;
     cursor: pointer;
@@ -72,21 +72,54 @@
 
 <script>
     function confirmSubmit(){
-        return confirm("Are you sure you want to submit?");
+      return confirm("Are you sure you want to submit?");
     }
 
     function confirmReset(){
-        return confirm("Are you sure you want to reset?");
+      return confirm("Are you sure you want to reset?");
     }
 
     function ifEmpty(element){
-        if (element.value.trim() === ""){
-            element.classList.add("invalid");
-        } 
-        
-        else{
-            element.classList.remove("invalid");
-        }
+      if (element.value.trim() === ""){
+        element.classList.add("error");
+      } else {
+        element.classList.remove("error");
+        element.classList.add("valid");
+      }
+    }
+
+    function saveSignup(event) {
+      // prevent default navigation
+      event.preventDefault();
+
+      if (!confirmSubmit()) return false;
+
+      const form = document.getElementById('signupForm');
+
+      // collect values (use names/ids that match the form below)
+      const newSignup = {
+        student_id: form.studentId.value.trim(),
+        full_name: form.fullName.value.trim(),
+        birthday: form.birthDay.value,
+        email: form.email.value.trim(),
+        mobile: form.mobile.value.trim(),
+        grade_level: form.gradeLevel.value,
+        status: form.status.value,
+        club: form.pref.value,
+        reason: form.why.value.trim()
+      };
+
+      const signUps = JSON.parse(localStorage.getItem("signUps")) || [];
+      signUps.push(newSignup);
+      localStorage.setItem("signUps", JSON.stringify(signUps));
+
+      alert("Sign-up saved successfully.");
+      form.reset();
+      return false;
+    }
+
+    function toView() {
+      window.location.href = "viewSignups.html";
     }
 </script>
 
@@ -144,5 +177,6 @@
 
    <input type = "submit" value = "Submit">
    <input type = "reset" value = "Reset"></button>
+   <input type = "button" onclick="toView()" value = "View Sign-ups"></button>
 
 </form>

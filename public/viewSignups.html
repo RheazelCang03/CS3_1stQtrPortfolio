@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Sign-ups</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #924e49;
+      color: white;
+    }
+  </style>
+
+  <script>
+    function loadSignups() {
+      const data = JSON.parse(localStorage.getItem("signUps"));
+
+      const output = document.getElementById("output");
+      const total = document.getElementById("total");
+
+      if (!data || data.length === 0) {
+        output.innerHTML = "<p>No sign-ups stored.</p>";
+        total.innerText = "";
+        return;
+      }
+
+      const filter = document.getElementById("filter").value;
+      const filtered = filter === "ALL"
+        ? data
+        : data.filter(s => s.club === filter);
+
+      if (filtered.length === 0) {
+        output.innerHTML = "<p>No sign-ups for this club.</p>";
+        total.innerText = "Total Sign-ups: 0";
+        return;
+      }
+
+      let html = `
+        <table>
+          <tr>
+            <th>Student ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile No.</th>
+            <th>Grade</th>
+            <th>Club</th>
+            <th>Status</th>
+          </tr>
+      `;
+
+      filtered.forEach(s => {
+        html += `
+          <tr>
+            <td>${s.student_id}</td>
+            <td>${s.full_name}</td>
+            <td>${s.email}</td>
+            <td>${s.mobile}</td>
+            <td>${s.grade_level}</td>
+            <td>${s.club}</td>
+            <td>${s.status}</td>
+          </tr>
+        `;
+      });
+
+      html += "</table>";
+
+      output.innerHTML = html;
+      total.innerText = "Total Sign-ups: " + filtered.length;
+    }
+
+    window.onload = loadSignups;
+  </script>
+</head>
+
+<body>
+
+<h2>Club Sign-ups</h2>
+
+<label>
+  Filter by Club:
+  <select id="filter" onchange="loadSignups()">
+    <option value="ALL">ALL</option>
+    <option value="XYZ">XYZ</option>
+    <option value="Likha">Likha</option>
+    <option value="Allianti">Allianti</option>
+    <option value="Himig">Himig</option>
+    <option value="Sapienara">Sapienara</option>
+  </select>
+</label>
+
+<div id="output"></div>
+<p id="total"></p>
+
+<a href="index67.html">← Back to Sign-Up Page</a>
+
+</body>
+</html>
