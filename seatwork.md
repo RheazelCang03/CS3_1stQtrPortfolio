@@ -58,7 +58,7 @@
 - Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.
 
 
-> Compared to the default sidebar static positioning, the new sidebar has moved slightly to the right and slightly downwards and is now on top of main. 
+> Compared to the default sidebar static positioning, the new sidebar has moved slightly to the right and slightly downwards and is now on top of main. Additionally, unlike static positioning, the sidebar is now able to move.
 
 
 ### Step 2 (Fixed):
