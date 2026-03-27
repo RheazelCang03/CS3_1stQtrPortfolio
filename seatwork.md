@@ -113,7 +113,10 @@
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
 
-    > happy
+    > Static - cannot move.
+     Relative - can move.
+     Absolute - yes.
+     Fixed - cannot move at all its stuck forever no matter what u do.
 
     b. How does absolute positioning depend on its parent element?
 
@@ -125,4 +128,4 @@
 
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
 
-    > If I were to design a webpage for a school event, I would use positioning to push the most important information to the front of the user's screen. For example, if I were to make a webpage for my school's new cafe and there were new, special limited-edition items on the menu, I would make a new element for the new items and give them a greater z-index value than the rest of the menu items to make sure they are seen first and are given priority. 
+    > If I were to design a webpage for a school event, I would use positioning to push the most important information to the front of the user's screen. For example, if I were to make a webpage for my school's new cafe and there were new, special limited-edition items on the menu, I would make a new element for the new items and give them a greater z-index value than the rest of the menu items to make sure they are seen first and are given priority. On the same webpage, I would also make use of fixed positioning to make sure the footer, the description on how and where to order and pay, is always seen and readily available for the user.
