@@ -78,7 +78,7 @@
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
 
 
-> Position: absolute makes an element
+> Position: Absolute removes the element from the normal document flow, allows it to overlap other elements, and positions it according to the nearest positioned ancestor. If there is no positioned ancestors, it uses the document body and follows as the page scrolls. It is different from fixed due to their reference points: absolute relies on the nearest positioned ancestor, while fixed relies on the browser viewport to position the element.
 
 
 ### Step 4 : (Absolute)
@@ -113,18 +113,18 @@
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
 
-    > Static - cannot move.
-     Relative - can move.
-     Absolute - yes.
-     Fixed - cannot move at all its stuck forever no matter what u do.
+    > Static - Default, positioned according to normal document flow.
+     Relative - Positioned relative to its normal position in the document flow.
+     Absolute - Positioned relative to nearest position ancestor.
+     Fixed - Positioned relative to the viewport; often unmoving.
 
     b. How does absolute positioning depend on its parent element?
 
-    > birthday
+    > The element with Position: Absolute gets removed from the normal document flow then checks if the parent is static or not. If the parent is static, the element uses the document body and follows as the page scrolls. If the parent isn't (so its relative), the element follows the parent's left, bottom, right, and % width or height properties.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
 
-    > to 
+    > For fixed, the element can only be positioned one way: relative to the viewport. For sticky, elements can turn from being positioned relatively to being positioned in a fixed way depending on the scroll position. In conclusion, sticky is a dynamic position property that can do two positions, unlike fixed which can only position the element in one way.
 
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
 
