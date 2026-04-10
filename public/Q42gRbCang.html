@@ -109,7 +109,7 @@
     });
     localStorage.setItem("movieDetails", JSON.stringify(movieDetails));
 
-    addMovie();
+    showMovie();
     /* adds movie to the list */
     
     /* Clear the form */
@@ -134,7 +134,7 @@
                 "<span>" + x.year + " - " + x.genre + "</span><br>" +
                 "<span class='stars'>" + star + "</span>" +
                 "</div>";
-    }
+            }
   }
 
   function deleteMovie(index){
