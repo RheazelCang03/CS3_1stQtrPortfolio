@@ -74,7 +74,7 @@
     padding: 15px;
     margin-top: 10px;
     border-radius: 5px;
-    border-left: 300px solid #2257c9;
+    border-left: 4px solid #2257c9;
     }
 
     .stars {
@@ -135,7 +135,40 @@
     }
   }
 
-  window.onload = addMovie;
+  function deleteMovie(index){
+    let confirmation = confirm ("Are you sure you want to delete this movie?");
+
+    if (confirmation){
+        var movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
+        movieDetails.splice(index, 1);
+        localStorage.setItem("movieDetails", JSON.stringify(movieDetails));
+        showMovie();
+    }
+  }
+
+  function showMovie(){
+    var movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
+    var container = document.getElementById("movieList");
+        container.innerHTML = "";
+
+        for (var i = 0; i < movieDetails.length; i++){
+            var x = movieDetails[i];
+            var star = "";
+            for (var j = 1; j <= 5; j++){
+                star += j <= x.rating ? "★" : "☆";
+            }
+            container.innerHTML += 
+            "<div class='movie-card"
+        }
+         + (x.rating >= 4 ? " highly-rated" : "") + "'>" +
+            "<strong>" + x.title + "</strong><br>" +
+            "<span>" + x.year + " - " + x.genre + "</span><br>" +
+            "<span class='stars'>" + star + "</span><br>" +
+            "<button onclick='deleteMovie(" + i + ")'>Delete</button>" +
+            "</div>";
+    }
+
+  window.onload = showMovie;
 
 </script>
 
