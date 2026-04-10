@@ -118,24 +118,23 @@
     }
 
     function addMovie() {
- 
-        let movie = {
-            title: document.getElementById("title").value,
-            year: document.getElementById("year").value,
-            genre: document.getElementById("genre").value,
-            rating: rating
-        };
+        var movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
+        var container = document.getElementById("movieList");
+            container.innerHTML = "";
 
-        let movies;
-
-        if (localStorage.getItem("movies")) {
-            movies = JSON.parse(localStorage.getItem("movies"));
-        } else {
-            movies = [];
-        }
-        movies.push(movie);
-        localStorage.setItem("movies", JSON.stringify(movies));
-        displayMovies();
+            for (var i = 0; i < movieDetails.length; i++){
+                var x = movieDetails[i];
+                var star = "";
+                for (var j = 1; j <= 5; j++){
+                    star += j <= x.rating ? "★" : "☆";
+                }
+                container.innerHTML += 
+                "<div class='movie-card'>" +
+                "<strong>" + x.title + "</strong><br>" +
+                "<span>" + x.year + " - " + x.genre + "</span><br>" +
+                "<span class='stars'>" + star + "</span>" +
+                "</div>";
+    }
   }
 
   function deleteMovie(index){
@@ -170,14 +169,32 @@
             for (var j = 1; j <= 5; j++){
                 star += j <= x.rating ? "★" : "☆";
             }
-            container.innerHTML += "<div class='movie-card'>"
-                + x.title + " (" + x.year + ") - " 
-                + x.genre + ", Rating: <span style='color: gold'>" 
-                + star + "</span> "
-                + "<button onclick='deleteMovie(" + i + ")'>Delete</button>"
-                + "</div>";
+            var card = document.createElement("div");
+                card.className = "movie-card";
+                var info = document.createElement("div");
+                info.className = "movie-card-info";
+
+                info.innerHTML += 
+                    "<strong>" + x.title + "</strong><br>" +
+                    "<span>" + x.year + " - " + x.genre + "</span><br>" +
+                    "<span class='stars'>" + star + "</span>" +
+                    "</div>";
+
+            var deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete-btn";
+            deleteBtn.textContent = "Delete";
+            deleteBtn.onclick = (function(idx) { 
+                return function() {
+                    deleteMovies(idx);
+                };
+            })(i);
+
+            card.appendChild(info);
+            card.appendChild(deleteBtn);
+            container.appendChild(card);
+            }
         }
-    }
+
 
 showMovie();
 
