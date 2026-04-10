@@ -109,12 +109,11 @@
     });
     localStorage.setItem("movieDetails", JSON.stringify(movieDetails));
 
-    showMovie();
+    addMovie();
     /* adds movie to the list */
     
     /* Clear the form */
     document.querySelector("form").reset();
-
     }
 
     function addMovie() {
@@ -195,8 +194,7 @@
             }
         }
 
-
-showMovie();
+window.onload = showMovie();
 
 </script>
 
