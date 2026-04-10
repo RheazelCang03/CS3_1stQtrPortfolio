@@ -118,24 +118,24 @@
     }
 
     function addMovie() {
-        var movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
-        var container = document.getElementById("movieList");
-            container.innerHTML = "";
+ 
+        let movie = {
+            title: document.getElementById("title").value,
+            year: document.getElementById("year").value,
+            genre: document.getElementById("genre").value,
+            rating: rating
+        };
 
-            for (var i = 0; i < movieDetails.length; i++){
-                var x = movieDetails[i];
-                var star = "";
-                for (var j = 1; j <= 5; j++){
-                    star += j <= x.rating ? "★" : "☆";
-                }
-                container.innerHTML += 
-                "<div class='movie-card'>" +
-                "<strong>" + x.title + "</strong><br>" +
-                "<span>" + x.year + " - " + x.genre + "</span><br>" +
-                "<span class='stars'>" + star + "</span>" +
-                + "<button onclick='deleteMovie(" + i + ")'>Delete</button>"+ 
-                "</div>";
-    }
+        let movies;
+
+        if (localStorage.getItem("movies")) {
+            movies = JSON.parse(localStorage.getItem("movies"));
+        } else {
+            movies = [];
+        }
+        movies.push(movie);
+        localStorage.setItem("movies", JSON.stringify(movies));
+        displayMovies();
   }
 
   function deleteMovie(index){
