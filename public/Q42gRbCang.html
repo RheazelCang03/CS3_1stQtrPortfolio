@@ -75,8 +75,8 @@
     margin-top: 10px;
     border-radius: 5px;
     border-left: 4px solid #2257c9;
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 400px;
+    margin-right: 400px;
     }
 
     .stars {
@@ -161,13 +161,13 @@
             }
             container.innerHTML += 
             "<div class='movie-card"
+                  + movies[i].title + " (" + movies[i].year + ") - " 
+                + movies[i].genre + ", Rating: <span style='color: gold'>" 
+                + stars + "</span> "
+                + "<button onclick='deleteMovie(" + i + ")'>Delete</button>"
+                + "</div>";
         }
-         + (x.rating >= 4 ? " highly-rated" : "") + "'>" +
-            "<strong>" + x.title + "</strong><br>" +
-            "<span>" + x.year + " - " + x.genre + "</span><br>" +
-            "<span class='stars'>" + star + "</span><br>" +
-            "<button onclick='deleteMovie(" + i + ")'>Delete</button>" +
-            "</div>";
+
     }
 
   window.onload = showMovie;
