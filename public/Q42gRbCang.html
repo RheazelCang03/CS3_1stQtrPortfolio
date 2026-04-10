@@ -75,8 +75,8 @@
     margin-top: 10px;
     border-radius: 5px;
     border-left: 4px solid #2257c9;
-    margin-left: 400px;
-    margin-right: 400px;
+    margin-left: 390px;
+    margin-right: 390px;
     }
 
     .stars {
@@ -141,7 +141,7 @@
     let confirmation = confirm ("Are you sure you want to delete this movie?");
 
     if (confirmation){
-        var movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
+        let movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
         movieDetails.splice(index, 1);
         localStorage.setItem("movieDetails", JSON.stringify(movieDetails));
         showMovie();
@@ -149,9 +149,19 @@
   }
 
   function showMovie(){
-    var movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
-    var container = document.getElementById("movieList");
-        container.innerHTML = "";
+
+    let movieList = document.getElementById("movieList");
+    movieList.innerHTML = "";
+
+    let movies;
+
+    if(localstorage.getItem("movies")){
+        movies = JSON.parse(localStorage.getItem("movies"));
+    } 
+    
+    else {
+        movies = [];
+    }
 
         for (var i = 0; i < movieDetails.length; i++){
             var x = movieDetails[i];
@@ -159,18 +169,16 @@
             for (var j = 1; j <= 5; j++){
                 star += j <= x.rating ? "★" : "☆";
             }
-            container.innerHTML += 
-            "<div class='movie-card"
-                  + movies[i].title + " (" + movies[i].year + ") - " 
-                + movies[i].genre + ", Rating: <span style='color: gold'>" 
-                + stars + "</span> "
+            container.innerHTML += "<div class='movie-card'>"
+                + x.title + " (" + x.year + ") - " 
+                + x.genre + ", Rating: <span style='color: gold'>" 
+                + star + "</span> "
                 + "<button onclick='deleteMovie(" + i + ")'>Delete</button>"
                 + "</div>";
         }
-
     }
 
-  window.onload = showMovie;
+showMovie();
 
 </script>
 
