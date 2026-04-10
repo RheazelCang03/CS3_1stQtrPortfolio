@@ -137,15 +137,11 @@
   }
 
   function deleteMovie(index){
-    let confirmation = confirm ("Are you sure you want to delete this movie?");
-
-    if (confirmation){
         let movieDetails = JSON.parse(localStorage.getItem("movieDetails")) || [];
         movieDetails.splice(index, 1);
         localStorage.setItem("movieDetails", JSON.stringify(movieDetails));
         showMovie();
     }
-  }
 
   function showMovie(){
 
